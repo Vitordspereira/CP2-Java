@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Desconto</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Calculadora de Desconto</h1>
+    <p th:if="${valorDesconto != null}">
+        O valor do desconto é: <span th:text="${valorDesconto}"></span><br>
+        O preço final do produto é: <span th:text="${precoFinal}"></span><br>
+    </p>
+
+    <form method="post" th:action="@{/desconto/porcentagem}">
+        <div>
+            <label>Preço do Produto:</label>
+            <input type="number" name="preco" step="0.01" required>
+        </div>
+        <div>
+            <label>Porcentagem de Desconto:</label>
+            <input type="number" name="porcentagemDesconto" required>
+        </div>
+        <button type="submit">Calcular</button>
+    </form>
+</div>
+</body>
+</html>
+
